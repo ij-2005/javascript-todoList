@@ -1,2 +1,4 @@
-# javascript-todoList
+it auto saves every other tasks you create / delete.
+/ the website is responsive also!
+--
 tried practicing an localStorage here, some help with ai with understanding how to make the buttons for each div responsive. But debugged the bugs the ai caused in the arrays woa! 
