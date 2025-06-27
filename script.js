@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
   });
 
 //variables
-const saveBtn = document.getElementById("save-task-btn");
+const saveBtn = document.getElementById("save-btn");
 const loadTaskBtn = document.getElementById("load-task-btn");
 const addNewBtn = document.getElementById("open-task-btn");
 const closeTaskForm = document.getElementById("close-task-btn");
@@ -15,13 +15,11 @@ const addTaskBtn = document.getElementById("add-task");
 const taskContainer = document.querySelector(".tasks-container");
 const addBtnContainer = document.getElementById("btn-div-container");
 
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 console.log(tasks);
 
 let taskIndex = 0;
-
-
 
 //functions
 
@@ -35,6 +33,7 @@ function updateList(tasksz){
 
 
 function Save(){
+    alert("saved.");
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -63,6 +62,7 @@ const validationCheck = (title, date, description) => {
         const date = document.getElementById("date-input").value;
         const description = document.getElementById("description-input").value;
         pushTask(title, date, description);
+        AddTask(title, date, description);
         toggleHiddens();
         newTaskForm.reset();
     }else{
@@ -70,7 +70,8 @@ const validationCheck = (title, date, description) => {
     }
 }
 
-const loadTasks = (tasks)=>{
+const loadTasks = ()=>{
+    tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     if(tasks.length === 0){
         alert("There are no saves!");
     }else{
@@ -94,8 +95,6 @@ newTaskForm.addEventListener('submit',(e)=>{
     const date = document.getElementById("date-input").value.trim();
     const description = document.getElementById("description-input").value.trim();
     validationCheck(title, date, description);
-    AddTask(title, date, description);
-    Save();
 })
 
 addNewBtn.addEventListener('click', ()=> {
@@ -104,6 +103,7 @@ addNewBtn.addEventListener('click', ()=> {
 
 closeTaskForm.addEventListener('click', ()=> {
     toggleHiddens();
+    newTaskForm.reset();
 });
 
 taskContainer.addEventListener('click', function(e) {
@@ -113,7 +113,6 @@ taskContainer.addEventListener('click', function(e) {
         const indexNumber = taskDiv.getAttribute('data-index');
         tasks.splice(indexNumber, 1);
         taskDiv.remove();
-        Save();
         taskIndex --;
     } 
     updateList(tasks);
@@ -122,7 +121,10 @@ taskContainer.addEventListener('click', function(e) {
 });
 
 loadTaskBtn.addEventListener('click', ()=>{
-    loadTasks(tasks);
+    loadTasks();
+    console.log(tasks);
 });
+
+saveBtn.addEventListener('click', ()=>{Save()});
 
 
