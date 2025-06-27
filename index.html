@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+    <!-- icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- css stylesheet -->
+    <link rel="stylesheet" href="styleZZ.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <main>
+
+        <section class="header">
+            <h1>To Do List.</h1>
+        </section>
+
+        <section class="btn-div" id="btn-div-container">
+            <div class="btn">
+                <button id="open-task-btn">Add New Task.</button>
+                <button id="load-task-btn">Load tasks.</button>
+            </div>
+        </section>
+
+        <form class="task-forms hidden" id="task-form">
+            <div class="task-body">
+
+                <container class="close-btn-container">
+                <button id="close-task-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+                </container>
+
+                <label class="task-form-label" for="title-input">Title</label>
+                <input required type="text" class="form-control" id="title-input" value="" />
+
+                <label class="task-form-label" for="date-input">Date</label>
+                <input required type="date" class="form-control" id="date-input" value="" />
+
+                <label class="task-form-label" for="description-input">Description</label>
+                <textarea required class="form-control" id="description-input" cols="30" rows="5"></textarea>
+
+                <button id="add-task" type="submit">Add task.</button>
+            </div>
+        </form>
+
+        <div class="tasks-container">
+            <!--<div class="tasks-"-->
+        </div>
+    </main>
+    <footer>
+    <p>By <a href="https://github.com/ij-2005" target="_blank"><i class="fa-brands fa-github"></i>IJ2005.</a></i></p>
+    </footer>
+    
+</body>
+<script src="script.js"></script>
+</html>
