@@ -71,8 +71,11 @@ const validationCheck = (title, date, description) => {
 }
 
 const loadTasks = ()=>{
+
+    
     tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    if(taskContainer.querySelector('div[class*="task"]')){
+    const existing = taskContainer.querySelector('div[class*="task"]');
+    if(existing){
         if(confirm("This will overwrite the current tasks.")){ 
             if(confirm("are you sure?")){
                 alert("loaded.")
@@ -83,11 +86,15 @@ const loadTasks = ()=>{
         }else{
             alert("Load denied.");
         }
+
+
     }else if(tasks.length === 0){
         alert("There are no saves!");
     }else{
         updateList(tasks);
     }
+
+
 }
     
     
