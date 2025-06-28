@@ -15,7 +15,7 @@ const addTaskBtn = document.getElementById("add-task");
 const taskContainer = document.querySelector(".tasks-container");
 const addBtnContainer = document.getElementById("btn-div-container");
 
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = [];
 
 console.log(tasks);
 
@@ -72,7 +72,18 @@ const validationCheck = (title, date, description) => {
 
 const loadTasks = ()=>{
     tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    if(tasks.length === 0){
+    if(taskContainer.querySelector('div[class*="task"]')){
+        if(confirm("This will overwrite the current tasks.")){ 
+            if(confirm("are you sure?")){
+                alert("loaded.")
+                updateList(tasks);
+            }else{
+                return;
+            } 
+        }else{
+            alert("Load denied.");
+        }
+    }else if(tasks.length === 0){
         alert("There are no saves!");
     }else{
         updateList(tasks);
